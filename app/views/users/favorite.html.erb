@@ -1,0 +1,10 @@
+<h1>Favorite</h1>
+<br>
+<% @bookmark_list.each do |p|%>
+<%= image_tag p.image.url %>
+<p>User: <%= p.user.name %></p>
+<p>Title: <%= p.title %></p>
+<% end %>
+
+<br>
+<%= link_to "Picture", pictures_path %>

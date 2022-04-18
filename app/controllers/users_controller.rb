@@ -31,6 +31,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def favorite
+    bookmarks = Favorite.where(user_id: current_user.id).pluck(:picture_id)
+    @bookmark_list = Picture.find(bookmarks)
+  end
 
   private
 

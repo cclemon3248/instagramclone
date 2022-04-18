@@ -21,6 +21,7 @@ class PicturesController < ApplicationController
 
   # GET /pictures/1/edit
   def edit
+    redirect_to pictures_path unless current_user.id == @picture.user_id
   end
 
   # POST /pictures or /pictures.json
@@ -53,12 +54,12 @@ class PicturesController < ApplicationController
 
   # DELETE /pictures/1 or /pictures/1.json
   def destroy
-    @picture.destroy
-
-    respond_to do |format|
-      format.html { redirect_to pictures_url, notice: "Picture was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    if current_user.id == @picture.user_id
+      @picture.destroy
+      redirect_to pictures_path, notice:"ブログを削除しました！"
+    else
+      redirect_to pictures_path
+    end  
   end
 
   def confirm

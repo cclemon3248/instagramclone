@@ -27,10 +27,10 @@ class PicturesController < ApplicationController
 
   # POST /pictures or /pictures.json
   def create
-
+    @contact = current_user
     @picture = current_user.pictures.build(picture_params)
     if @picture.save
-      ContactMailer.contact_mail(@picture).deliver
+      ContactMailer.contact_mail(@contact).deliver
       redirect_to pictures_path, notice: 'Contact was successfully created.'
     else
       render :new

@@ -1,0 +1,8 @@
+table {
+  margin: auto;
+  border: 2px #000000 solid;
+}
+
+td, th {
+  border: 2px #000000 solid;
+}

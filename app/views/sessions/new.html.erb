@@ -1,10 +1,12 @@
 <h1><%= t ".Log in" %></h1>
+<br>
 <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
-  <%= f.label t ".email" %>
-  <%= f.email_field :email %>
-
-  <%= f.label t ".password" %>
-  <%= f.password_field :password %>
-
-  <%= f.submit t ".Log in" %>
+  <div>
+    <%= f.email_field :email, placeholder: "メールアドレス" %>
+  </div>
+  <div>
+    <%= f.password_field :password, placeholder: "パスワード" %>
+  </div>
+  <br>
+  <%= f.submit "ログイン", class: 'btn btn-primary' %>
 <% end %>

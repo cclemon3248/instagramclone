@@ -8,9 +8,9 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <div class="text-center">
   <body>
-    <div class="text-center">
+    
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "#{key}") %>
       <% end %>
@@ -23,8 +23,9 @@
         <%= link_to "Sign up", new_user_path %>
         <%= link_to "Login", new_session_path %>
       <% end %>
-    <div class="text-center">  
+    
     
     <%= yield %>
   </body>
+  </div>
 </html>

@@ -29,15 +29,12 @@ class PicturesController < ApplicationController
   def create
 
     @picture = current_user.pictures.build(picture_params)
-    respond_to do |format|
-      if @picture.save
-        format.html { redirect_to picture_url(@picture), notice: "Picture was successfully created." }
-        format.json { render :show, status: :created, location: @picture }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @picture.errors, status: :unprocessable_entity }
-      end
-    end
+    if @picture.save
+      ContactMailer.contact_mail(@picture).deliver
+      redirect_to pictures_path, notice: 'Contact was successfully created.'
+    else
+      render :new
+    end 
   end
 
   # PATCH/PUT /pictures/1 or /pictures/1.json

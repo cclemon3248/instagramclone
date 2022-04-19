@@ -31,7 +31,7 @@ class PicturesController < ApplicationController
     @picture = current_user.pictures.build(picture_params)
     if @picture.save
       ContactMailer.contact_mail(@contact).deliver
-      redirect_to pictures_path, notice: 'Contact was successfully created.'
+      redirect_to pictures_path, notice: '投稿を完了しました'
     else
       render :new
     end 

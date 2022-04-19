@@ -18,7 +18,6 @@
         <td><%= picture.user.name %></td>
         <td><%= picture.title %></td>
         <td><%= image_tag picture.image.url %></td>
-        
         <td><%= link_to 'Show', picture %></td>
         <% if current_user.id == picture.user_id %>   
         <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
